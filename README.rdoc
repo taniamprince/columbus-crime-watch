@@ -3,6 +3,16 @@
 The goal of Columbus Crime Watch is to reveal interesting statistics on Columbus, Ohio crime data such as the ratio of criminal reports to convictions, the sex and race of offenders, and how the 
 crime rate compares to other cities.
 
+== Crime Data
+
+Criminal records are retrieved from the Franklin County Municipal Clerk of Courts. The data can be publicly accessed online at the following site:
+
+* http://www.fcmcclerk.com/case/
+
+Criminal reports are fetched from the Columbus Ohio Division of Police at:
+
+* http://www.columbuspolice.org/Reports/
+
 == Dependencies
 
 * Ruby 2.2.0
@@ -18,13 +28,3 @@ Extract files into a directory and initialize the database with the following co
 Install Nokogiri
 
   $ gem install nokogiri
-
-== Crime Data
-
-Criminal records are retrieved from the Franklin County Municipal Clerk of Courts. The data can be publicly accessed online at the following site:
-
-* http://www.fcmcclerk.com/case/
-
-Criminal reports are fetched from the Columbus Ohio Division of Police at:
-
-* http://www.columbuspolice.org/Reports/
