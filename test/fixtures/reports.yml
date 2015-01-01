@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  CR-Number: MyString
+  date: MyString
+  description: MyString
+   victim: MyString
+  location: MyString
+
+two:
+  CR-Number: MyString
+  date: MyString
+  description: MyString
+   victim: MyString
+  location: MyString
