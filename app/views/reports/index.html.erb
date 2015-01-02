@@ -17,10 +17,10 @@
   <tbody>
     <% @reports.each do |report| %>
       <tr>
-        <td><%= report.CR-Number %></td>
+        <td><%= report.CRNumber %></td>
         <td><%= report.date %></td>
         <td><%= report.description %></td>
-        <td><%= report. victim %></td>
+        <td><%= report.victim %></td>
         <td><%= report.location %></td>
         <td><%= link_to 'Show', report %></td>
         <td><%= link_to 'Edit', edit_report_path(report) %></td>

@@ -1,0 +1,5 @@
+<h1>Crime Report Stats</h1>
+
+<% require 'chartkick' %>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%= pie_chart Report.group(:description).count %>

@@ -1,0 +1,2 @@
+module CrimeReportStatsHelper
+end

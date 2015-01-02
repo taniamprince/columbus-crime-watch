@@ -18,6 +18,7 @@ Criminal reports are fetched from the Columbus Ohio Division of Police at:
 * Ruby 2.2.0
 * Rails 4.2.0
 * Nokogiri
+* Chartkick
 
 == Installation
 
@@ -25,6 +26,6 @@ Extract files into a directory and initialize the database with the following co
 
   $ rake db:migrate
 
-Install Nokogiri
+Install dependencies
 
-  $ gem install nokogiri
+  $ gem bundle install

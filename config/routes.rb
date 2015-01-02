@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'crime-report-stats' => 'crime_report_stats#index'
+
+  get 'web-scraper' => 'web_scraper#index'
+
+  get 'record-scraper' => 'record_scraper#index'
+
+  get 'report-scraper' => 'report_scraper#index'
+
   resources :reports
 
   # The priority is based upon order of creation: first created -> highest priority.
