@@ -1,12 +1,44 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <html>
 <head>
-  <title>CBUS Crime Watch</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CBUS Crime Watch</title>
+	<meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag    'normalize', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
+
+<!--[if lt IE 7]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Header -->
+<div id="header">
+			
+	<!-- Logo -->
+		<h1><a href="index.html" id="logo">CBUS<em> Crime Watch</em></a></h1>
+	
+	<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li class="current"><a href="index.html">Home</a></li>
+				<li><a href="">Admin</a></li>
+				<li><a href="">Crime Report Stats</a></li>
+				<li><a href="">Public Record Stats</a></li>
+				<li><a href="">About</a></li>
+			</ul>
+		</nav>
+
+</div>
 
 <%= yield %>
 
