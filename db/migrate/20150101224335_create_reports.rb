@@ -6,6 +6,7 @@ class CreateReports < ActiveRecord::Migration
       t.string :description
       t.string :victim
       t.string :location
+      t.string :category
 
       t.timestamps null: false
     end

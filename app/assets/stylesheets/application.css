@@ -115,10 +115,20 @@ textarea {
 		}
 
 			#header h1 a {
-				font-size: 1.5em;
+				font-size: 1.2em;
 				letter-spacing: -0.025em;
 				border: 0;
 			}
+
+	#logo a h1
+	{
+		font-weight: 400;
+	}
+	
+	#logo span
+	{
+		font-weight: 800;
+	}
 
 	#nav {
 		cursor: default;
@@ -200,7 +210,26 @@ textarea {
 				display: none;
 			}
 
-/* Text */
+/* Layout */
+
+.sub-head {
+	width: 100%;
+	height: 100px;
+	background-color: #e4e4e4;
+	border-bottom: 1px solid #d7d6d6;
+}
+
+.container {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+	margin: 0 auto;
+	padding: 25px;
+	max-width: 1200px;
+	min-width: 400px;
+}
+
+/* Text Style */
 
 	a {
 		-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -231,10 +260,9 @@ textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: inherit;
+		color: #474747;
 		font-weight: 600;
-		line-height: 1.75em;
-		margin-bottom: 1em;
+		line-height: 20px;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {

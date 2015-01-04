@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'report-category' => 'report_category#index'
+
+  get 'admin' => 'admin#index'
+
   get 'crime-report-stats' => 'crime_report_stats#index'
 
   get 'web-scraper' => 'web_scraper#index'

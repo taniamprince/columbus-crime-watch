@@ -7,18 +7,17 @@ crime rate compares to other cities.
 
 Criminal records are retrieved from the Franklin County Municipal Clerk of Courts. The data can be publicly accessed online at the following site:
 
-* http://www.fcmcclerk.com/case/
+* http://fcmcclerk.com/case/
 
 Criminal reports are fetched from the Columbus Ohio Division of Police at:
 
-* http://www.columbuspolice.org/Reports/
+* http://columbuspolice.org/Reports/
 
 == Dependencies
 
 * Ruby 2.2.0
 * Rails 4.2.0
 * Nokogiri
-* Chartkick
 
 == Installation
 
@@ -28,4 +27,4 @@ Extract files into a directory and initialize the database with the following co
 
 Install dependencies
 
-  $ gem bundle install
+  $ bundle
