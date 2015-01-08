@@ -2,7 +2,7 @@ class CreateReports < ActiveRecord::Migration
   def change
     create_table :reports do |t|
       t.string :CRNumber
-      t.string :date
+      t.date :date
       t.string :description
       t.string :victim
       t.string :location

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150101224335) do
 
   create_table "reports", force: :cascade do |t|
     t.string   "CRNumber"
-    t.string   "date"
+    t.date     "date"
     t.string   "description"
     t.string   "victim"
     t.string   "location"

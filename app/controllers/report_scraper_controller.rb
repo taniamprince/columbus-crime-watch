@@ -6,44 +6,53 @@ class ReportScraperController < ApplicationController
 
   # Web Scraper dependencies
   require 'rubygems'
-  require 'nokogiri'
+  require 'mechanize'
   require 'open-uri'
 
   # Scrapes www.columbuspolice.org/Reports/ for police reports to
   # add to the report database
   def add_reports
 
-  	# URL of search results
-  	url = 'http://www.columbuspolice.org/Reports/Results?from=12/1/2014&to=12/31/2014&loc=all&types=9'
+  	# Get HTML of page
+  	agent = Mechanize.new
+    html = agent.get 'http://www.columbuspolice.org/Reports/Results?from=1/3/2015&to=1/3/2015&loc=all&types=9'
 
-  	# Get HTML with Nokogiri
-  	html = Nokogiri::HTML(open(url))
+    # Get number of records
+    records = html.search('//span[@id="MainContent_lblCount"]')
+    recordNum = records[0].content.strip.gsub(/[^0-9]/, '').to_i
 
-  	# Extract table rows
-  	rows = html.xpath('//tr[not(@class="pgr")]')
+    # Calculate page count. There is a max of 29 records per page.
+    pageNum = (recordNum / 29).ceil
 
-  	# Extract data from table columns
-  	i = 0
-  	rows.each do |row| 	
-  		# Add report to database	
-  		Report.create(:CRNumber => "#{row.xpath("//td")[i].content.strip}", \
-  			:description  => "#{row.xpath("//td")[i + 1].content.strip}",   \
-			:victim  => "#{row.xpath("//td")[i + 2].content.strip}",  		\
-			:date  => "#{row.xpath("//td")[i + 3].content.strip}",          \
-			:location  => "#{row.xpath("//td")[i + 4].content.strip}")      
-  		i += 5
+    # Keep track of which page we are on.
+    position = 1
 
-  		# Check report for arrestees
-  		arrestURL = 'http://www.columbuspolice.org/Reports/PublicReport?caseID=4087103'
-  	end
+    # Scrape the pages
+    while position <= pageNum
+        # Manipulate form fields for JavaScript postback
+        form = html.form
+        form.add_field!('__EVENTTARGET','ctl00$MainContent$gvResults')
+        form.add_field!('__EVENTARGUMENT','Page$#{position}')
+        page = agent.submit(form)
+
+        # Extract table rows. Exclude the last two pagination rows.
+        rows = page.search("//tr[not(position() > last() - 2)]")
+
+        # Extract data from table columns and add report to database.
+        i = 0
+        rows.each_with_index do |row|   
+            Report.create(:CRNumber => "#{row.search("//td")[i].content.strip}", \
+            :description  => "#{row.search("//td")[i + 1].content.strip}",       \
+            :victim  => "#{row.search("//td")[i + 2].content.strip}",            \
+            :date  => "#{row.search("//td")[i + 3].content.strip}",              \
+            :location  => "#{row.search("//td")[i + 4].content.strip}")      
+            i += 5
+        end
+
+        # Increment page position
+        position += 1
+    end
 
   end
-	
-
-
-
-
-  # Redirect to reports database
-  # redirect_to 'http://localhost:3000/reports'
 
 end

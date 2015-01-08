@@ -17,7 +17,7 @@ Criminal reports are fetched from the Columbus Ohio Division of Police at:
 
 * Ruby 2.2.0
 * Rails 4.2.0
-* Nokogiri
+* Mechanize
 
 == Installation
 
