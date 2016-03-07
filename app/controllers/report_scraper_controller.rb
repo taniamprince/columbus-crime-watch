@@ -9,6 +9,11 @@ class ReportScraperController < ApplicationController
   require 'mechanize'
   require 'open-uri'
 
+  def postback target, argument
+    self['__EVENTTARGET'], self['__EVENTARGUMENT'] = target, argument
+    submit
+  end
+
   # Scrapes www.columbuspolice.org/Reports/ for police reports to
   # add to the report database
   def add_reports
@@ -28,8 +33,7 @@ class ReportScraperController < ApplicationController
     position = 1
 
     # Scrape the pages
-    #while position <= pageNum
-
+    while position < pageNum
 
         # Extract table rows. Exclude the last two pagination rows.
         rows = html.search("//tr[not(position() > last() - 2)]")
@@ -45,9 +49,17 @@ class ReportScraperController < ApplicationController
             i += 5
         end
 
-        # Increment page position
-        position += 1
-    #end
+         # Increment page position
+        position = position + 1
+
+        # Get next page
+        form = html.form
+        page = "Page$" + position.to_s
+        form.add_field!('__EVENTARGUMENT', page)
+        form.add_field!('__EVENTTARGET', 'ctl00$MainContent$gvResults')
+        html = agent.submit(form)
+     
+    end
 
   end
 
