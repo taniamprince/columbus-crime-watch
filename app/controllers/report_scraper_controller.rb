@@ -15,7 +15,7 @@ class ReportScraperController < ApplicationController
 
   	# Get HTML of page
   	agent = Mechanize.new
-    html = agent.get 'http://www.columbuspolice.org/Reports/Results?from=1/3/2015&to=1/3/2015&loc=all&types=9'
+    html = agent.get 'http://columbuspolice.org/Reports/Results?from=1/1/2014&to=1/2/2014&loc=all&types=4'
 
     # Get number of records
     records = html.search('//span[@id="MainContent_lblCount"]')
@@ -28,15 +28,11 @@ class ReportScraperController < ApplicationController
     position = 1
 
     # Scrape the pages
-    while position <= pageNum
-        # Manipulate form fields for JavaScript postback
-        form = html.form
-        form.add_field!('__EVENTTARGET','ctl00$MainContent$gvResults')
-        form.add_field!('__EVENTARGUMENT','Page$#{position}')
-        page = agent.submit(form)
+    #while position <= pageNum
+
 
         # Extract table rows. Exclude the last two pagination rows.
-        rows = page.search("//tr[not(position() > last() - 2)]")
+        rows = html.search("//tr[not(position() > last() - 2)]")
 
         # Extract data from table columns and add report to database.
         i = 0
@@ -44,14 +40,14 @@ class ReportScraperController < ApplicationController
             Report.create(:CRNumber => "#{row.search("//td")[i].content.strip}", \
             :description  => "#{row.search("//td")[i + 1].content.strip}",       \
             :victim  => "#{row.search("//td")[i + 2].content.strip}",            \
-            :date  => "#{row.search("//td")[i + 3].content.strip}",              \
+            :date  => "#{row.search("//td")[i + 3].content.strip.to_date}",      \
             :location  => "#{row.search("//td")[i + 4].content.strip}")      
             i += 5
         end
 
         # Increment page position
         position += 1
-    end
+    #end
 
   end
 

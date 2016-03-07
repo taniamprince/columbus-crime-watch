@@ -19,10 +19,12 @@
 		The reports can be publicly accessed at <a href="//columbuspolice.org/Reports/"> http://columbuspolice.org/Reports/</a>.</p>
 
 		<% 
-			@Assault_2014 = Report.where(:category => "Assault").count
-			@Burglary_2014 = Report.where(:category => "Burglary").count
-			@CriminalDamaging_2014 = Report.where(:category => "Criminal Damaging").count
-			@DischargingFirearms_2014 = Report.where(:category => "Discharging Firearms").count
+			@Assault_2014 = Report.where(:category => "Assault", :year => "2014").count
+			@Burglary_2014 = Report.where(:category => "Burglary", :year => "2014").count
+			@Rape_2014 = Report.where(:category => "Rape", :year => "2014").count
+			@Murder_2014 = Report.where(:category => "Murder", :year => "2014").count
+			@TheftFromMotorVehicle_2014 = Report.where(:category => "Theft From Motor Vehicle", :year => "2014").count
+			@MotorVehicleTheft_2014 = Report.where(:category => "Motor Vehicle Theft", :year => "2014").count
 		%>
 
 		<!-- Highcharts.com JavaScript -->
@@ -34,10 +36,10 @@
 		            type: 'bar'
 		        },
 		        title: {
-		            text: '2005-2014 Police Reports'
+		            text: '2005-2015 Police Reports'
 		        },
 		        xAxis: {
-		            categories: ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014']
+		            categories: ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015']
 		        },
 		        yAxis: {
 		            min: 0,
@@ -59,36 +61,18 @@
 		        }, {
 		            name: 'Burglary',
 		            data: [2, 2, 3, 2, 1, 1, 1, 1, 1, <%= @Burglary_2014 %>]
-		        }, {
-		            name: 'Criminal Damaging',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @CriminalDamaging_2014  %>]
-		        }, {
-		            name: 'Discharging Firearms',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @DischargingFirearms_2014 %>]
-		        }, {
-		            name: 'Domestic Violence',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, 1]
-		        }, {
-		            name: 'Fraud',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, 1]
-		        }, {
-		            name: 'Menacing',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, 1]
-		        }, {
+		        }, {		         
 		            name: 'Motor Vehicle Theft',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, 1]
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @MotorVehicleTheft_2014 %>]
 		        }, {
 		            name: 'Murder',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, 1]
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Murder_2014 %>]
 		        }, {
 		            name: 'Rape',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, 1]
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Rape_2014 %>]
 		        }, {
 		            name: 'Theft From Motor Vehicle',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, 1]
-		        }, {
-		            name: 'Theft',
-		            data: [3, 6, 7, 7, 2, 4, 1, 1, 1, 1]
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @TheftFromMotorVehicle_2014 %>]
 		        }]
 		    });
 		});

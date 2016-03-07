@@ -14,19 +14,15 @@ class ReportCategoryController < ApplicationController
 
   		# Assign crime category based on description
 	  	case description
-			when "551 - Criminal Damaging"
-				report.update_attribute(:category, "Criminal Damaging")
 			when "118 - Theft - From Motor Vehicle - Petit"
-				report.update_attribute(:category, "Theft From Motor Vehicle (Petty)")
+				report.update_attribute(:category, "Theft From Motor Vehicle")
 			when "117 - Theft - From Motor Vehicle - Felony"
-				report.update_attribute(:category, "Theft From Motor Vehicle (Felony)")
+				report.update_attribute(:category, "Theft From Motor Vehicle")
 			when "450 - Robbery"
 				report.update_attribute(:category, "Robbery")
-			when "255 - Menacing"
-				report.update_attribute(:category, "Menacing")
-			when "259 - Discharging Firearms"
-				report.update_attribute(:category, "Discharging Firearms")
 			when "254 - Assault"
+				report.update_attribute(:category, "Assault")
+			when "262 - Felony Assault"
 				report.update_attribute(:category, "Assault")
 			when "200 - Motor Vehicle Theft"
 				report.update_attribute(:category, "Motor Vehicle Theft")
@@ -40,11 +36,19 @@ class ReportCategoryController < ApplicationController
 				report.update_attribute(:category, "Burglary")
 			when "105 - Burglary - Zone 5"
 				report.update_attribute(:category, "Burglary")
-			when "115 - Theft - Misdemeanor"
-				report.update_attribute(:category, "Theft (Petty)")
-			when "400 - Fraud"
-				report.update_attribute(:category, "Fraud")
-		end		
+			when "300 - Rape/Sexual Assault Vic 16 Yr and Older"
+				report.update_attribute(:category, "Rape")
+			when "301 - Rape/Sexual Assault Vic 15 Yr and Younger"
+				report.update_attribute(:category, "Rape")
+			when "250 - Homicide"
+				report.update_attribute(:category, "Murder")
+		end
+
+		# Get crime date	
+		date = report.date.to_s[0..3]	
+
+		# Update Year column from date
+		report.update_attribute(:year, date)
 	end
 
   end
