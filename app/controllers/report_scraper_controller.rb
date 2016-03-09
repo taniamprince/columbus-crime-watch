@@ -13,9 +13,13 @@ class ReportScraperController < ApplicationController
   # add to the report database
   def add_reports
 
+    # Get start date and end date
+    startDate = params[:startDate]
+    endDate = params[:endDate]
+
   	# Get HTML of page
   	agent = Mechanize.new
-    html = agent.get 'http://columbuspolice.org/Reports/Results?from=6/01/2005&to=6/30/2005&loc=all&types=9'
+    html = agent.get 'http://columbuspolice.org/Reports/Results?from=' + startDate + '&to=' + endDate + '&loc=all&types=9'
 
     # Get number of records
     records = html.search('//span[@id="MainContent_lblCount"]')

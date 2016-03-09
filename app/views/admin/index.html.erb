@@ -22,16 +22,16 @@
     <div class="bs-component">
       <div class="well">
     		<p>Scrape columbuspolice.org/Reports/
-    		for police reports and adds them to the database.</p>
+    		for police reports and add them to the database.</p>
     		<form action="report-scraper" method="get">
           <div class="row">
               <div class="form-group col-lg-6">
                 <label class="control-label" for="focusedInput">Start Date</label>
-                <input class="form-control" id="focusedInput" type="text" value="mm/dd/yyyy">
+                <%= text_field_tag 'startDate', 'mm/dd/yyyy', class: 'form-control' %>
               </div>
               <div class="form-group col-lg-6">
                 <label class="control-label" for="focusedInput">End Date</label>
-                <input class="form-control" id="focusedInput" type="text" value="mm/dd/yyyy">
+                <%= text_field_tag 'endDate', 'mm/dd/yyyy', class: 'form-control' %>
               </div>
           </div>
           <input type="submit" value="Scrape Reports" class="btn btn-primary">
@@ -43,10 +43,10 @@
     <div class="bs-component">
       <div class="well">
         <p>Checks each report for offense type and assigns a category. 
-		This makes the data much easier to display in graphs.</p> 
-		<form action="report-category" method="get">
-			<input type="submit" value="Categorize Crime Types" class="btn btn-primary">
-		</form>
+    		This makes the data much easier to display in graphs.</p> 
+    		<form action="report-category" method="get">
+    			<input type="submit" value="Categorize Crime Types" class="btn btn-primary">
+    		</form>
       </div>
     </div>
   </div>
