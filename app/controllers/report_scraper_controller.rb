@@ -15,7 +15,7 @@ class ReportScraperController < ApplicationController
 
   	# Get HTML of page
   	agent = Mechanize.new
-    html = agent.get 'http://columbuspolice.org/Reports/Results?from=5/16/2005&to=12/31/2005&loc=all&types=9'
+    html = agent.get 'http://columbuspolice.org/Reports/Results?from=6/01/2005&to=6/30/2005&loc=all&types=9'
 
     # Get number of records
     records = html.search('//span[@id="MainContent_lblCount"]')

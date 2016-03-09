@@ -1,21 +1,60 @@
-<div class="sub-head">
-	<div class="container">
-		<h1>Admin</h1>
-	</div>
+<div class="page-header">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 id="buttons">Admin</h1>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-	<h2>Report Scraper</h2>
-	<p>Scrapes <a href="//columbuspolice.org/Reports/">columbuspolice.org/Reports/</a>
-	for police reports and adds them to the database.</p>
-	<form action="report-scraper" method="get">
-		<input type="submit" value="Scrape Reports">
-	</form>
-
-	<h2>Categorize Crime Types</h2>
-	<p>Checks each report for offense type and assigns a category. 
-	This makes the data much easier to display in graphs.</p> 
-	<form action="report-category" method="get">
-		<input type="submit" value="Categorize Crime Types">
-	</form>
+<div class="row">
+  <div class="col-lg-4">
+    <h2>Scrape Reports</h2>
+  </div>
+  <div class="col-lg-4">
+    <h2>Categorize Reports</h2>
+  </div>
+  <div class="col-lg-4">
+    <h2>Populate Graphs</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well">
+    		<p>Scrape columbuspolice.org/Reports/
+    		for police reports and adds them to the database.</p>
+    		<form action="report-scraper" method="get">
+          <div class="row">
+              <div class="form-group col-lg-6">
+                <label class="control-label" for="focusedInput">Start Date</label>
+                <input class="form-control" id="focusedInput" type="text" value="mm/dd/yyyy">
+              </div>
+              <div class="form-group col-lg-6">
+                <label class="control-label" for="focusedInput">End Date</label>
+                <input class="form-control" id="focusedInput" type="text" value="mm/dd/yyyy">
+              </div>
+          </div>
+          <input type="submit" value="Scrape Reports" class="btn btn-primary">
+    		</form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well">
+        <p>Checks each report for offense type and assigns a category. 
+		This makes the data much easier to display in graphs.</p> 
+		<form action="report-category" method="get">
+			<input type="submit" value="Categorize Crime Types" class="btn btn-primary">
+		</form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well">
+        Coming soon!
+      </div>
+    </div>
+  </div>
 </div>

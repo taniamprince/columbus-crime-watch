@@ -47,7 +47,7 @@ class ReportCategoryController < ApplicationController
 		# Get crime year
 		year = ""
 		if report.date.length == 10
-			year = report.date[7..10]
+			year = report.date[6..10]
 		end
 
 		# Update Year column from date
