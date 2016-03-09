@@ -8,18 +8,10 @@
 
 <div class="row">
   <div class="col-lg-4">
-    <h2>Scrape Reports</h2>
-  </div>
-  <div class="col-lg-4">
-    <h2>Categorize Reports</h2>
-  </div>
-  <div class="col-lg-4">
-    <h2>Populate Graphs</h2>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-4">
+
+    <!-- Report Scraper -->
     <div class="bs-component">
+      <h2>Scrape Reports</h2>
       <div class="well">
     		<p>Scrape columbuspolice.org/Reports/
     		for police reports and add them to the database.</p>
@@ -34,24 +26,63 @@
                 <%= text_field_tag 'endDate', 'mm/dd/yyyy', class: 'form-control' %>
               </div>
           </div>
-          <input type="submit" value="Scrape Reports" class="btn btn-primary">
+          <input type="submit" value="Scrape Reports" class="btn btn-primary" data-toggle="modal" data-target="#scraperModal">
     		</form>
+
+        <!-- Show progress modal when scraping -->
+        <div class="modal fade" id="scraperModal" role="dialog">
+          <div class="modal-dialog">    
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>Scraping reports...</p>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar" style="width: 100%"></div>
+                </div>
+              </div>
+            </div>     
+          </div>
+        </div>
+        <!-- End modal -->
+
       </div>
     </div>
   </div>
   <div class="col-lg-4">
     <div class="bs-component">
+
+      <!-- Categorize Reports -->
+      <h2>Categorize Reports</h2>
       <div class="well">
-        <p>Checks each report for offense type and assigns a category. 
-    		This makes the data much easier to display in graphs.</p> 
+        <p>Assign reports to categories. This is necessary to display statistics.</p> 
     		<form action="report-category" method="get">
-    			<input type="submit" value="Categorize Crime Types" class="btn btn-primary">
+    			<input type="submit" value="Categorize Crime Types" class="btn btn-primary" data-toggle="modal" data-target="#categoryModal">
     		</form>
+
+        <!-- Show progress modal when categorizing -->
+        <div class="modal fade" id="categoryModal" role="dialog">
+          <div class="modal-dialog">    
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>Categorizing reports...</p>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar" style="width: 100%"></div>
+                </div>
+              </div>
+            </div>     
+          </div>
+        </div>
+        <!-- End modal -->
+
       </div>
     </div>
   </div>
   <div class="col-lg-4">
+
+    <!-- Populate Graphs -->
     <div class="bs-component">
+      <h2>Populate Graphs</h2>
       <div class="well">
         Coming soon!
       </div>

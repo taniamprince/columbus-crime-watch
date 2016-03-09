@@ -62,6 +62,8 @@ class ReportScraperController < ApplicationController
      
     end
 
+    redirect_to 'http://localhost:3000/admin'
+
   end
 
 end

@@ -54,6 +54,8 @@ class ReportCategoryController < ApplicationController
 		report.update_attribute(:year, year)
 	end
 
+	redirect_to 'http://localhost:3000/admin'
+
   end
 
 end
