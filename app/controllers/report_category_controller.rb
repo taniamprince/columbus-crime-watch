@@ -44,11 +44,14 @@ class ReportCategoryController < ApplicationController
 				report.update_attribute(:category, "Murder")
 		end
 
-		# Get crime date	
-		date = report.date.to_s[0..3]	
+		# Get crime year
+		year = ""
+		if report.date.length == 10
+			year = report.date[7..10]
+		end
 
 		# Update Year column from date
-		report.update_attribute(:year, date)
+		report.update_attribute(:year, year)
 	end
 
   end

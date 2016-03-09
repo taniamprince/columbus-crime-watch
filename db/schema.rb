@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307124141) do
+ActiveRecord::Schema.define(version: 20160307160855) do
 
   create_table "reports", force: :cascade do |t|
     t.string   "CRNumber"
-    t.date     "date"
+    t.string   "date"
     t.string   "description"
     t.string   "victim"
     t.string   "location"

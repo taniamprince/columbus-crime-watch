@@ -22,6 +22,7 @@
 			@Assault_2014 = Report.where(:category => "Assault", :year => "2014").count
 			@Burglary_2014 = Report.where(:category => "Burglary", :year => "2014").count
 			@Rape_2014 = Report.where(:category => "Rape", :year => "2014").count
+			@Robbery_2014 = Report.where(:category => "Robbery", :year => "2014").count
 			@Murder_2014 = Report.where(:category => "Murder", :year => "2014").count
 			@TheftFromMotorVehicle_2014 = Report.where(:category => "Theft From Motor Vehicle", :year => "2014").count
 			@MotorVehicleTheft_2014 = Report.where(:category => "Motor Vehicle Theft", :year => "2014").count
@@ -57,22 +58,25 @@
 		        },
 		        series: [{
 		            name: 'Assault',
-		            data: [5, 3, 4, 7, 2, 1, 1, 1, 1, <%= @Assault_2014 %>]
+		            data: [5, 3, 4, 7, 2, 1, 1, 1, 1, <%= @Assault_2014 %>, 1]
 		        }, {
 		            name: 'Burglary',
-		            data: [2, 2, 3, 2, 1, 1, 1, 1, 1, <%= @Burglary_2014 %>]
+		            data: [2, 2, 3, 2, 1, 1, 1, 1, 1, <%= @Burglary_2014 %>, 1]
 		        }, {		         
 		            name: 'Motor Vehicle Theft',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @MotorVehicleTheft_2014 %>]
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @MotorVehicleTheft_2014 %>, 1]
 		        }, {
 		            name: 'Murder',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Murder_2014 %>]
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Murder_2014 %>, 1]
 		        }, {
 		            name: 'Rape',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Rape_2014 %>]
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Rape_2014 %>, 1]
+		        }, {
+		        	name: 'Robbery',
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Robbery_2014 %>, 1]
 		        }, {
 		            name: 'Theft From Motor Vehicle',
-		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @TheftFromMotorVehicle_2014 %>]
+		            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @TheftFromMotorVehicle_2014 %>, 1]
 		        }]
 		    });
 		});

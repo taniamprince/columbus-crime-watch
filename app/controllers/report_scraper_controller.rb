@@ -9,18 +9,13 @@ class ReportScraperController < ApplicationController
   require 'mechanize'
   require 'open-uri'
 
-  def postback target, argument
-    self['__EVENTTARGET'], self['__EVENTARGUMENT'] = target, argument
-    submit
-  end
-
   # Scrapes www.columbuspolice.org/Reports/ for police reports to
   # add to the report database
   def add_reports
 
   	# Get HTML of page
   	agent = Mechanize.new
-    html = agent.get 'http://columbuspolice.org/Reports/Results?from=1/1/2014&to=1/2/2014&loc=all&types=4'
+    html = agent.get 'http://columbuspolice.org/Reports/Results?from=5/16/2005&to=12/31/2005&loc=all&types=9'
 
     # Get number of records
     records = html.search('//span[@id="MainContent_lblCount"]')
@@ -33,7 +28,7 @@ class ReportScraperController < ApplicationController
     position = 1
 
     # Scrape the pages
-    while position < pageNum
+    loop do
 
         # Extract table rows. Exclude the last two pagination rows.
         rows = html.search("//tr[not(position() > last() - 2)]")
@@ -44,13 +39,15 @@ class ReportScraperController < ApplicationController
             Report.create(:CRNumber => "#{row.search("//td")[i].content.strip}", \
             :description  => "#{row.search("//td")[i + 1].content.strip}",       \
             :victim  => "#{row.search("//td")[i + 2].content.strip}",            \
-            :date  => "#{row.search("//td")[i + 3].content.strip.to_date}",      \
+            :date  => "#{row.search("//td")[i + 3].content.strip}",              \
             :location  => "#{row.search("//td")[i + 4].content.strip}")      
             i += 5
         end
 
          # Increment page position
         position = position + 1
+
+        break if position > pageNum
 
         # Get next page
         form = html.form
