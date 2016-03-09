@@ -15,17 +15,6 @@
 	<p>The following data was compiled from reports filed by the Columbus Ohio Division of Police.
 	The reports can be publicly accessed at <a href="//columbuspolice.org/Reports/"> http://columbuspolice.org/Reports/</a>.</p><br/>
 
-	<% 
-		@Assault_2014 = Report.where(:category => "Assault", :year => "2014").count
-		@Burglary_2014 = Report.where(:category => "Burglary", :year => "2014").count
-		@Rape_2014 = Report.where(:category => "Rape", :year => "2014").count
-		@Robbery_2014 = Report.where(:category => "Robbery", :year => "2014").count
-		@Murder_2014 = Report.where(:category => "Murder", :year => "2014").count
-		@TheftFromMotorVehicle_2014 = Report.where(:category => "Theft From Motor Vehicle", :year => "2014").count
-		@MotorVehicleTheft_2014 = Report.where(:category => "Motor Vehicle Theft", :year => "2014").count
-	%>
-
-	<!-- Highcharts.com JavaScript -->
 	<div id="container" style="min-width: 310px; max-width: 1200px; height: 600px; margin: 0 auto"></div>
 	<script>
 	$(function () {
@@ -34,10 +23,10 @@
 	            type: 'bar'
 	        },
 	        title: {
-	            text: '2005-2015 Police Reports'
+	            text: '2006-2015 Police Reports'
 	        },
 	        xAxis: {
-	            categories: ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015']
+	            categories: ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015']
 	        },
 	        yAxis: {
 	            min: 0,
@@ -55,25 +44,25 @@
 	        },
 	        series: [{
 	            name: 'Assault',
-	            data: [5, 3, 4, 7, 2, 1, 1, 1, 1, <%= @Assault_2014 %>, 1]
+	            data: [<%= Report.where(:category => "Assault", :year => "2006").count %>, <%= Report.where(:category => "Assault", :year => "2007").count %>, <%= Report.where(:category => "Assault", :year => "2008").count %>, <%= Report.where(:category => "Assault", :year => "2009").count %>, <%= Report.where(:category => "Assault", :year => "2010").count %>, <%= Report.where(:category => "Assault", :year => "2011").count %>, <%= Report.where(:category => "Assault", :year => "2012").count %>, <%= Report.where(:category => "Assault", :year => "2013").count %>, <%= Report.where(:category => "Assault", :year => "2014").count %>, <%= Report.where(:category => "Assault", :year => "2015").count %>]
 	        }, {
 	            name: 'Burglary',
-	            data: [2, 2, 3, 2, 1, 1, 1, 1, 1, <%= @Burglary_2014 %>, 1]
+	            data: [<%= Report.where(:category => "Burglary", :year => "2006").count %>, <%= Report.where(:category => "Burglary", :year => "2007").count %>, <%= Report.where(:category => "Burglary", :year => "2008").count %>, <%= Report.where(:category => "Burglary", :year => "2009").count %>, <%= Report.where(:category => "Burglary", :year => "2010").count %>, <%= Report.where(:category => "Burglary", :year => "2011").count %>, <%= Report.where(:category => "Burglary", :year => "2012").count %>, <%= Report.where(:category => "Burglary", :year => "2013").count %>, <%= Report.where(:category => "Burglary", :year => "2014").count %>, <%= Report.where(:category => "Burglary", :year => "2015").count %>]
 	        }, {		         
 	            name: 'Motor Vehicle Theft',
-	            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @MotorVehicleTheft_2014 %>, 1]
+	            data: [<%= Report.where(:category => "Motor Vehicle Theft", :year => "2006").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2007").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2008").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2009").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2010").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2011").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2012").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2013").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2014").count %>, <%= Report.where(:category => "Motor Vehicle Theft", :year => "2015").count %>]
 	        }, {
 	            name: 'Murder',
-	            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Murder_2014 %>, 1]
+	            data: [<%= Report.where(:category => "Murder", :year => "2006").count %>, <%= Report.where(:category => "Murder", :year => "2007").count %>, <%= Report.where(:category => "Murder", :year => "2008").count %>, <%= Report.where(:category => "Murder", :year => "2009").count %>, <%= Report.where(:category => "Murder", :year => "2010").count %>, <%= Report.where(:category => "Murder", :year => "2011").count %>, <%= Report.where(:category => "Murder", :year => "2012").count %>, <%= Report.where(:category => "Murder", :year => "2013").count %>, <%= Report.where(:category => "Murder", :year => "2014").count %>, <%= Report.where(:category => "Murder", :year => "2015").count %>]
 	        }, {
 	            name: 'Rape',
-	            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Rape_2014 %>, 1]
+	            data: [<%= Report.where(:category => "Rape", :year => "2006").count %>, <%= Report.where(:category => "Rape", :year => "2007").count %>, <%= Report.where(:category => "Rape", :year => "2008").count %>, <%= Report.where(:category => "Rape", :year => "2009").count %>, <%= Report.where(:category => "Rape", :year => "2010").count %>, <%= Report.where(:category => "Rape", :year => "2011").count %>, <%= Report.where(:category => "Rape", :year => "2012").count %>, <%= Report.where(:category => "Rape", :year => "2013").count %>, <%= Report.where(:category => "Rape", :year => "2014").count %>, <%= Report.where(:category => "Rape", :year => "2015").count %>]
 	        }, {
 	        	name: 'Robbery',
-	            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @Robbery_2014 %>, 1]
+	            data: [<%= Report.where(:category => "Robbery", :year => "2006").count %>, <%= Report.where(:category => "Robbery", :year => "2007").count %>, <%= Report.where(:category => "Robbery", :year => "2008").count %>, <%= Report.where(:category => "Robbery", :year => "2009").count %>, <%= Report.where(:category => "Robbery", :year => "2010").count %>, <%= Report.where(:category => "Robbery", :year => "2011").count %>, <%= Report.where(:category => "Robbery", :year => "2012").count %>, <%= Report.where(:category => "Robbery", :year => "2013").count %>, <%= Report.where(:category => "Robbery", :year => "2014").count %>, <%= Report.where(:category => "Robbery", :year => "2015").count %>]
 	        }, {
 	            name: 'Theft From Motor Vehicle',
-	            data: [3, 4, 4, 2, 5, 1, 1, 1, 1, <%= @TheftFromMotorVehicle_2014 %>, 1]
+	            data: [<%= Report.where(:category => "Theft From Motor Vehicle", :year => "2006").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2007").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2008").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2009").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2010").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2011").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2012").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2013").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2014").count %>, <%= Report.where(:category => "Theft From Motor Vehicle", :year => "2015").count %>]
 	        }]
 	    });
 	});
