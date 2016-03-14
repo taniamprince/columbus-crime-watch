@@ -16,6 +16,8 @@
       <th>Description</th>
       <th>Victim</th>
       <th>Location</th>
+      <th>Category</th>
+      <th>Year</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,6 +30,8 @@
         <td><%= report.description %></td>
         <td><%= report.victim %></td>
         <td><%= report.location %></td>
+        <td><%= report.category %></td>
+        <td><%= report.year %></td>
         <td><%= link_to 'Show', report %></td>
         <td><%= link_to 'Edit', edit_report_path(report) %></td>
         <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
